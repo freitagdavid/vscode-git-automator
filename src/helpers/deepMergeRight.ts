@@ -1,49 +1,14 @@
+import { assign, cloneDeep, concat, isArray } from 'radashi'
 import { isMergeableObject } from './isMergeableObject'
 
-function emptyTarget(val) {
-  return Array.isArray(val) ? [] : {}
+function cloneUnlessOtherwiseSpecified<T>(value: T): T {
+  return (isMergeableObject(value) ? cloneDeep(value as object) : value) as T
 }
 
-function cloneUnlessOtherwiseSpecified(value) {
-  return isMergeableObject(value) ? deepMergeRight(emptyTarget(value), value) : value
-}
-
-function arrayMerge(target, source) {
-  return target.concat(source).map(element => cloneUnlessOtherwiseSpecified(element))
-}
-
-function mergeObject(target, source) {
-  const destination = {}
-
-  if (isMergeableObject(target)) {
-    for (const key in target) {
-      destination[key] = cloneUnlessOtherwiseSpecified(target[key])
-    }
-  }
-
-  for (const key in source) {
-    if (!isMergeableObject(source[key]) || !target[key]) {
-      destination[key] = cloneUnlessOtherwiseSpecified(source[key])
-    } else {
-      destination[key] = deepMergeRight(target[key], source[key])
-    }
-  }
-
-  return destination
-}
-
-export function deepMergeRight(target, source) {
-  const sourceIsArray = Array.isArray(source)
-  const targetIsArray = Array.isArray(target)
-  const sourceAndTargetTypesMatch = sourceIsArray === targetIsArray
-
-  if (!sourceAndTargetTypesMatch) {
-    return cloneUnlessOtherwiseSpecified(source)
-  }
-
-  if (sourceIsArray) {
-    return arrayMerge(target, source)
-  }
-
-  return mergeObject(target, source)
+export function deepMergeRight(target: unknown, source: unknown): unknown {
+  const sourceIsArray = isArray(source)
+  const targetIsArray = isArray(target)
+  if (sourceIsArray !== targetIsArray) return cloneUnlessOtherwiseSpecified(source)
+  if (sourceIsArray) return concat(target as unknown[], source as unknown[]).map(cloneUnlessOtherwiseSpecified)
+  return isMergeableObject(target) ? assign(target as object, source as object) : assign({}, source as object)
 }

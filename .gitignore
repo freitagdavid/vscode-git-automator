@@ -163,3 +163,6 @@ dist
 /.vscode/settings.json
 
 *.vsix
+
+# Bun test extension test run directory
+src/test/fixtures/run

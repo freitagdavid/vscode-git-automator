@@ -6,7 +6,7 @@
       "name": "vscode-git-add-and-commit",
       "dependencies": {
         "await-to-js": "3.0.0",
-        "bun": "^1.3.8",
+        "radashi": "^12.7.1",
         "rorre": "1.2.0",
       },
       "devDependencies": {
@@ -18,6 +18,7 @@
         "@types/mocha": "10.0.10",
         "@types/node": "25.2.0",
         "@types/vscode": "1.108.1",
+        "bun": "^1.3.8",
         "fs-extra": "11.3.3",
         "rimraf": "6.1.2",
         "rollup": "4.57.1",
@@ -287,6 +288,8 @@
     "picomatch": ["picomatch@4.0.3", "", {}, "sha512-5gTmgEY/sqK6gFXLIsQNH19lWb4ebPDLA4SdLP7dsWkIXHWlG66oPuVvXSGFPppYZz8ZDZq0dYYrbHfBCVUb1Q=="],
 
     "pkg-dir": ["pkg-dir@4.2.0", "", { "dependencies": { "find-up": "^4.0.0" } }, "sha512-HRDzbaKjC+AOWVXxAU/x54COGeIv9eb+6CkDSQoNTt4XyWoIJvuPsXizxu/Fr23EiekbtZwmh1IcIG/l/a10GQ=="],
+
+    "radashi": ["radashi@12.7.1", "", {}, "sha512-rwxcGY3oKMQJ+ojhS4MlxyVWqdXPVJSxg3ZjXDYYz26DYRuAAs+7XBM406/GYzPEBbjSJqdKfHDpBRfjWn34RQ=="],
 
     "resolve": ["resolve@1.22.11", "", { "dependencies": { "is-core-module": "^2.16.1", "path-parse": "^1.0.7", "supports-preserve-symlinks-flag": "^1.0.0" }, "bin": { "resolve": "bin/resolve" } }, "sha512-RfqAvLnMl313r7c9oclB1HhUEAezcpLjz95wFH4LVuhk9JF/r22qmVP9AMmOU4vMX7Q8pN8jwNg/CSpdFnMjTQ=="],
 

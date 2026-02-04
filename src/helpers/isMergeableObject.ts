@@ -16,6 +16,6 @@ function isReactElement(value) {
   return value.$$typeof === REACT_ELEMENT_TYPE
 }
 
-export function isMergeableObject(value) {
+export function isMergeableObject<T>(value: T): boolean {
   return isNonNullObject(value) && !isSpecial(value)
 }

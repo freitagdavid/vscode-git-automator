@@ -1,16 +1,16 @@
-// biome-ignore lint/style/useNodejsImportProtocol: Node builtin
-import { strictEqual } from 'assert'
-import { copySync } from 'fs-extra'
+import { copySync, mkdirSync } from 'fs-extra'
 // biome-ignore lint/style/useNodejsImportProtocol: Node builtin
 import { join } from 'path'
+import { beforeAll, describe, expect, test } from 'bun:test'
 
 import { exec } from '../helpers/exec'
 
-suite('Git Automator Extension Tests', () => {
-  const fixturesPath = join(__dirname, 'fixtures')
-  const fixturesSourcePath = join(__dirname, '..', '..', 'src', 'test', 'fixtures')
+describe('Git Automator Extension Tests', () => {
+  const fixturesSourcePath = join(import.meta.dir, 'fixtures')
+  const fixturesPath = join(import.meta.dir, 'fixtures', 'run')
 
-  suiteSetup(() => {
+  beforeAll(() => {
+    mkdirSync(fixturesPath, { recursive: true })
     copySync(join(fixturesSourcePath, 'sample.md'), join(fixturesPath, 'sample.md'))
   })
 
@@ -36,7 +36,7 @@ suite('Git Automator Extension Tests', () => {
       error = e
     }
 
-    strictEqual(undefined, error)
-    strictEqual('# Hello World !\n', output)
+    expect(error).toBeUndefined()
+    expect(output).toBe('# Hello World !\n')
   })
 })
