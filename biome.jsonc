@@ -1,8 +1,8 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.8.0/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.3.14/schema.json",
   "extends": ["@ivangabriele/biome-config"],
   "files": {
-    "ignore": ["./.vscode-test/*", "./.yarn/*", "./node_modules/*"]
+    "includes": ["!.vscode-test/**/*", "!.yarn/**/*", "!node_modules/**/*"]
   },
   "formatter": {
     "indentStyle": "space",

@@ -1,0 +1,28 @@
+[tools]
+bun = "latest"
+node = "latest"
+
+[tasks.install]
+run = "bun install"
+description = "Install the dependencies"
+sources = ["package.json", "bun.lockb"]
+
+
+[tasks.build]
+run = "bun run --bun bunConfigs/build.ts"
+description = "Build the extension"
+depends = ["install"]
+sources = ["bunConfigs/build.ts", "src/**/*"]
+
+[tasks.build-dev]
+run = "bun run --bun bunConfigs/build-dev.ts"
+description = "Build the extension in watch mode"
+depends = ["install"]
+sources = ["bunConfigs/build.ts", "src/**/*"]
+outputs = ["out/**/*"]
+
+[tasks.lint]
+run = "biome check --write ."
+description = "Lint the code"
+depends = ["install"]
+sources = ["src/**/*", "bunConfigs/**/*", "package.json", "bun.lockb"]
