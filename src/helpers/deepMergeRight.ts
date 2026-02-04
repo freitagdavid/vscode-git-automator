@@ -9,7 +9,7 @@ function cloneUnlessOtherwiseSpecified(value) {
 }
 
 function arrayMerge(target, source) {
-  return target.concat(source).map((element) => cloneUnlessOtherwiseSpecified(element))
+  return target.concat(source).map(element => cloneUnlessOtherwiseSpecified(element))
 }
 
 function mergeObject(target, source) {
@@ -22,7 +22,6 @@ function mergeObject(target, source) {
   }
 
   for (const key in source) {
-    // biome-ignore lint/complexity/useSimplifiedLogicExpression: <explanation>
     if (!isMergeableObject(source[key]) || !target[key]) {
       destination[key] = cloneUnlessOtherwiseSpecified(source[key])
     } else {

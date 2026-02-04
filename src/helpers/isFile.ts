@@ -1,5 +1,4 @@
-// biome-ignore lint/style/useNodejsImportProtocol: <explanation>
-// biome-ignore lint/correctness/noNodejsModules: <explanation>
+// biome-ignore lint/style/useNodejsImportProtocol: Node builtin
 import { lstatSync } from 'fs'
 
 export function isFile(fileAbsolutePath: string): boolean {

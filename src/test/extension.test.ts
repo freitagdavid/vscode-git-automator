@@ -1,24 +1,19 @@
-// biome-ignore lint/style/useNodejsImportProtocol: <explanation>
-// biome-ignore lint/correctness/noNodejsModules: <explanation>
+// biome-ignore lint/style/useNodejsImportProtocol: Node builtin
 import { strictEqual } from 'assert'
-// biome-ignore lint/style/useNodejsImportProtocol: <explanation>
-// biome-ignore lint/correctness/noNodejsModules: <explanation>
-import { join } from 'path'
 import { copySync } from 'fs-extra'
+// biome-ignore lint/style/useNodejsImportProtocol: Node builtin
+import { join } from 'path'
 
 import { exec } from '../helpers/exec'
 
-// biome-ignore lint/correctness/noUndeclaredVariables: <explanation>
 suite('Git Automator Extension Tests', () => {
   const fixturesPath = join(__dirname, 'fixtures')
   const fixturesSourcePath = join(__dirname, '..', '..', 'src', 'test', 'fixtures')
 
-  // biome-ignore lint/correctness/noUndeclaredVariables: <explanation>
   suiteSetup(() => {
     copySync(join(fixturesSourcePath, 'sample.md'), join(fixturesPath, 'sample.md'))
   })
 
-  // biome-ignore lint/correctness/noUndeclaredVariables: <explanation>
   test('Test helpers/exec()', async () => {
     let command: string
     switch (process.platform) {
@@ -31,9 +26,9 @@ suite('Git Automator Extension Tests', () => {
         break
     }
 
-    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+    // biome-ignore lint/suspicious/noExplicitAny: test output/error
     let output: any
-    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+    // biome-ignore lint/suspicious/noExplicitAny: test output/error
     let error: any
     try {
       output = await exec(command, [join(fixturesPath, 'sample.md')])

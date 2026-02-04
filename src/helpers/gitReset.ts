@@ -1,6 +1,6 @@
 import { exec } from './exec'
 
-// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+// biome-ignore lint/suspicious/noExplicitAny: git command output type
 export async function gitReset(filesRelativePaths: string[] = []): Promise<any> {
   const allIndex = filesRelativePaths.indexOf('*')
   if (allIndex !== -1) {

@@ -1,9 +1,8 @@
-// biome-ignore lint/style/useNodejsImportProtocol: <explanation>
-// biome-ignore lint/correctness/noNodejsModules: <explanation>
+// biome-ignore lint/style/useNodejsImportProtocol: Node builtin
 import { spawn } from 'child_process'
 import { workspace } from 'vscode'
 
-// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+// biome-ignore lint/suspicious/noExplicitAny: git command output type
 export async function exec(command: string, args: string[]): Promise<any> {
   if (!workspace.workspaceFolders) {
     return
@@ -18,14 +17,14 @@ export async function exec(command: string, args: string[]): Promise<any> {
     try {
       const batch = spawn(command, args, { cwd })
 
-      batch.stdout.on('data', (data) => {
+      batch.stdout.on('data', data => {
         stdout += data.toString()
       })
 
-      batch.stderr.on('data', (data) => {
+      batch.stderr.on('data', data => {
         stdout += data.toString()
       })
-      batch.stderr.on('data', (data) => {
+      batch.stderr.on('data', data => {
         stderr += data.toString()
       })
 

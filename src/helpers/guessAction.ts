@@ -12,17 +12,14 @@ export function guessAction(commitMessage: string, state, customActions: GuessCu
   if (customAction === undefined) {
     switch (state) {
       case 'ADDED':
-        // biome-ignore lint/style/noParameterAssign: <explanation>
         commitMessage += 'create'
         break
 
       case 'DELETED':
-        // biome-ignore lint/style/noParameterAssign: <explanation>
         commitMessage += 'remove'
         break
 
       case 'RENAMED':
-        // biome-ignore lint/style/noParameterAssign: <explanation>
         commitMessage += 'move'
         break
 
@@ -33,7 +30,6 @@ export function guessAction(commitMessage: string, state, customActions: GuessCu
     return commitMessage
   }
 
-  // biome-ignore lint/style/noParameterAssign: <explanation>
   commitMessage += customAction.action
 
   return commitMessage

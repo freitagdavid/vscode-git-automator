@@ -1,19 +1,14 @@
-import { gitStatus } from './gitStatus'
-
 import type { GitStatusFile } from '../types'
+import { gitStatus } from './gitStatus'
 
 interface GitShortActions {
   [action: string]: GitStatusFile['state']
 }
 
 const GIT_SHORT_ACTIONS: GitShortActions = {
-  // biome-ignore lint/style/useNamingConvention: <explanation>
   A: 'ADDED',
-  // biome-ignore lint/style/useNamingConvention: <explanation>
   D: 'DELETED',
-  // biome-ignore lint/style/useNamingConvention: <explanation>
   M: 'MODIFIED',
-  // biome-ignore lint/style/useNamingConvention: <explanation>
   R: 'RENAMED',
 }
 

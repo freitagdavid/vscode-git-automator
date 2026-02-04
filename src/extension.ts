@@ -1,7 +1,6 @@
-// biome-ignore lint/style/useNodejsImportProtocol: <explanation>
-// biome-ignore lint/correctness/noNodejsModules: <explanation>
+// biome-ignore lint/style/useNodejsImportProtocol: Node builtin
 import { relative } from 'path'
-import { type ExtensionContext, commands, window as vscodeWindow, workspace } from 'vscode'
+import { commands, type ExtensionContext, window as vscodeWindow, workspace } from 'vscode'
 
 import { addAndCommitFiles } from './libs/addAndCommitFiles'
 import { loadLocalConfig } from './libs/loadLocalConfig'

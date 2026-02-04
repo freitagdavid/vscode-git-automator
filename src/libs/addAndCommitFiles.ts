@@ -8,11 +8,9 @@ import { guessAction } from '../helpers/guessAction'
 import { replaceStringWith } from '../helpers/replaceStringWith'
 import { showOptionalMessage } from '../helpers/showOptionalMessage'
 import { validateCommitMessage } from '../helpers/validateCommitMessage'
+import type { Settings } from '../types'
 import { cancelAdd } from './cancelAdd'
 
-import type { Settings } from '../types'
-
-// biome-ignore lint/complexity/noExcessiveCognitiveComplexity: <explanation>
 export async function addAndCommitFiles(filesRelativePaths: string[], settings: Settings): Promise<void> {
   // ----------------------------------
   // GIT ADD
@@ -59,7 +57,7 @@ export async function addAndCommitFiles(filesRelativePaths: string[], settings: 
         commitMessage = `${commonFilePath}: `
 
         if (settings.prefillCommitMessage.ignoreFileExtension) {
-          const matches = commitMessage.match(/[^\/](\.\w+):/)
+          const matches = commitMessage.match(/[^/](\.\w+):/)
           if (matches !== null && matches.length === 2) {
             commitMessage = commitMessage.replace(matches[1], '')
           }

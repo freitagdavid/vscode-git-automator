@@ -1,26 +1,26 @@
 {
-  "version": "0.2.0",
   "configurations": [
     {
+      "args": ["--extensionDevelopmentPath=${workspaceRoot}"],
       "name": "Extension",
-      "type": "extensionHost",
+      "outFiles": ["${workspaceRoot}/out/**/*.js"],
+      "preLaunchTask": "npm: watch",
       "request": "launch",
       "runtimeExecutable": "${execPath}",
-      "args": ["--extensionDevelopmentPath=${workspaceRoot}"],
-      "stopOnEntry": false,
       "sourceMaps": true,
-      "outFiles": ["${workspaceRoot}/out/**/*.js"],
-      "preLaunchTask": "npm: watch"
+      "stopOnEntry": false,
+      "type": "extensionHost"
     },
     {
+      "args": ["--extensionDevelopmentPath=${workspaceRoot}"],
       "name": "Extension (prod)",
-      "type": "extensionHost",
+      "preLaunchTask": "npm: compile",
       "request": "launch",
       "runtimeExecutable": "${execPath}",
-      "args": ["--extensionDevelopmentPath=${workspaceRoot}"],
-      "stopOnEntry": false,
       "sourceMaps": false,
-      "preLaunchTask": "npm: compile"
+      "stopOnEntry": false,
+      "type": "extensionHost"
     }
-  ]
+  ],
+  "version": "0.2.0"
 }

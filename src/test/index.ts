@@ -1,4 +1,3 @@
-// biome-ignore lint/style/noNamespaceImport: <explanation>
 import * as testRunner from 'vscode/lib/testrunner'
 
 // https://github.com/mochajs/mocha/wiki/Using-mocha-programmatically#set-options

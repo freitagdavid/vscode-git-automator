@@ -1,9 +1,7 @@
 export const SETTINGS_SCHEMA = {
   id: 'Settings',
-  type: 'object',
   properties: {
     prefillCommitMessage: {
-      type: 'object',
       properties: {
         disableOptionalMessages: {
           type: 'boolean',
@@ -15,19 +13,19 @@ export const SETTINGS_SCHEMA = {
           type: 'boolean',
         },
         replacePatternWith: {
-          type: 'array',
           items: {
-            type: 'object',
             properties: {
               pattern: {
-                type: 'string',
                 minLength: 1,
+                type: 'string',
               },
               with: {
                 type: 'string',
               },
             },
+            type: 'object',
           },
+          type: 'array',
         },
         withFileWorkspacePath: {
           type: 'boolean',
@@ -36,24 +34,26 @@ export const SETTINGS_SCHEMA = {
           type: 'boolean',
         },
         withGuessedCustomActions: {
-          type: 'array',
           items: {
-            type: 'object',
             properties: {
               action: {
                 type: 'string',
               },
               pattern: {
-                type: 'string',
                 minLength: 1,
+                type: 'string',
               },
               state: {
                 enum: ['ADDED', 'DELETED', 'MODIFIED', 'RENAMED'],
               },
             },
+            type: 'object',
           },
+          type: 'array',
         },
       },
+      type: 'object',
     },
   },
+  type: 'object',
 }

@@ -1,8 +1,6 @@
-// biome-ignore lint/style/useNodejsImportProtocol: <explanation>
-// biome-ignore lint/correctness/noNodejsModules: <explanation>
+// biome-ignore lint/style/useNodejsImportProtocol: Node builtin
 import { readFileSync } from 'fs'
-// biome-ignore lint/style/useNodejsImportProtocol: <explanation>
-// biome-ignore lint/correctness/noNodejsModules: <explanation>
+// biome-ignore lint/style/useNodejsImportProtocol: Node builtin
 import { resolve } from 'path'
 import { window as vscodeWindow, workspace } from 'vscode'
 
@@ -48,13 +46,13 @@ export function loadLocalConfig(workspaceRootAbsolutePath: string): Settings {
   const normalizedSettings = deepMergeRight(defaultSettings, userSettings)
 
   normalizedSettings.prefillCommitMessage.replacePatternWith =
-    normalizedSettings.prefillCommitMessage.replacePatternWith.map((settingsPattern) => ({
+    normalizedSettings.prefillCommitMessage.replacePatternWith.map(settingsPattern => ({
       pattern: normalizePattern(settingsPattern.pattern as string),
       with: settingsPattern.with,
     }))
 
   normalizedSettings.prefillCommitMessage.withGuessedCustomActions =
-    normalizedSettings.prefillCommitMessage.withGuessedCustomActions.map((settingsPattern) => ({
+    normalizedSettings.prefillCommitMessage.withGuessedCustomActions.map(settingsPattern => ({
       action: settingsPattern.action,
       pattern: normalizePattern(settingsPattern.pattern as string),
       state: settingsPattern.state,
